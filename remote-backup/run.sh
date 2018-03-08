@@ -36,7 +36,7 @@ function add-ssh-key {
 function copy-backup-to-remote {
 
     cd /backup/
-    if [ "$ZIP_PASSWORD" == "" ]; then
+    if [[ ! $ZIP_PASSWORD  ]]; then
       echo "Copying ${slug}.tar to ${REMOTE_DIRECTORY} on ${SSH_HOST} using SCP"
       scp -F "${HOME}/.ssh/config" "${slug}.tar" remote:"${REMOTE_DIRECTORY}"
     else

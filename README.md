@@ -15,6 +15,7 @@
 * [Installation](#installation)
 * [Configuration](#configuration)
 * [Example](#example)
+* [Changelog & Releases](#changelog)
 * [Docker status](#docker)
 
 ## <a name='about'></a>About
@@ -85,6 +86,19 @@ _Add-on configuration_:
 
 **Note**: _This is just an example, don't copy and past it! Create your own!_
 
+## < name='changelog'>Changelog & Releases
+
+This repository keeps a [change log](CHANGELOG.md). The format of the log
+is based on [Keep a Changelog][keepchangelog].
+
+Releases are based on [Semantic Versioning][semver], and use the format
+of ``MAJOR.MINOR.PATCH``. In a nutshell, the version will be incremented
+based on the following:
+
+- ``MAJOR``: Incompatible or major changes.
+- ``MINOR``: Backwards-compatible new features and enhancements.
+- ``PATCH``: Backwards-compatible bugfixes and package updates.
+
 
 ## <a name='docker'></a>Docker status
 
@@ -139,5 +153,8 @@ _Add-on configuration_:
 [releases-shield]: https://img.shields.io/github/release/mr-bjerre/hassio-remote-backup.svg
 [travis-build]: https://travis-ci.org/mr-bjerre/hassio-remote-backup
 [travis-build-shield]: https://travis-ci.org/mr-bjerre/hassio-remote-backup.svg?branch=master
+
+[keepchangelog]: http://keepachangelog.com/en/1.0.0/
+[semver]: http://semver.org/spec/v2.0.0.html
 
 [hassio-addons]: https://github.com/mr-bjerre/hassio-addons
