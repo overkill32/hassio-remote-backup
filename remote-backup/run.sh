@@ -8,7 +8,7 @@ SSH_PORT=$(jq --raw-output ".ssh_port" $CONFIG_PATH)
 SSH_USER=$(jq --raw-output ".ssh_user" $CONFIG_PATH)
 SSH_KEY=$(jq --raw-output ".ssh_key[]" $CONFIG_PATH)
 REMOTE_DIRECTORY=$(jq --raw-output ".remote_directory" $CONFIG_PATH)
-REPEAT=$(jq --raw-output '.repeat' $CONFIG_PATH)
+ZIP_PASSWORD=$(jq --raw-output '.zip_password' $CONFIG_PATH)
 
 # create variables
 SSH_ID="${HOME}/.ssh/id"
@@ -34,8 +34,17 @@ function add-ssh-key {
 }
 
 function copy-backup-to-remote {
-    echo "Copying ${slug} to ${REMOTE_DIRECTORY} on ${SSH_HOST} using SCP"
-    scp -F "${HOME}/.ssh/config" "/backup/${slug}.tar" remote:"${REMOTE_DIRECTORY}"
+
+    cd /backup/
+    if [ "$ZIP_PASSWORD" == "" ]; then
+      echo "Copying ${slug}.tar to ${REMOTE_DIRECTORY} on ${SSH_HOST} using SCP"
+      scp -F "${HOME}/.ssh/config" "${slug}.tar" remote:"${REMOTE_DIRECTORY}"
+    else
+      echo "Copying password-protected ${slug}.zip to ${REMOTE_DIRECTORY} on ${SSH_HOST} using SCP"
+      zip -P "$ZIP_PASSWORD" "${slug}.zip" "${slug}".tar
+      scp -F "${HOME}/.ssh/config" "${slug}.zip" remote:"${REMOTE_DIRECTORY}" && rm "${slug}.zip"
+    fi
+
 }
 
 function delete-local-backup {

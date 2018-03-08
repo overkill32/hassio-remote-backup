@@ -45,6 +45,7 @@ See my [repository of addons][hassio-addons] for more information.
 |`ssh_user`|Yes|Username to use for `SCP`.|
 |`ssh_key`|Yes|The ssh key to use. Not that it should *NOT* be password protected.|
 |`remote_directory`|Yes|The directory to put the backups on the remote server.|
+|`zip_password`|No|If set then the backup will be contained in a password protected zip|
 
 ## <a name='example'></a>Example: daily backups at 4 AM
 
@@ -77,7 +78,8 @@ _Add-on configuration_:
 "X+6r/gTvUEQv1ufAuUE5wKcq9FsbnTa3FOF0PdQDWl0=",
 "-----END RSA PRIVATE KEY-----"
   ],
-  "remote_directory": "~/hassio-backups"
+  "remote_directory": "~/hassio-backups",
+  "zip_password": "password_protect_it"
 }
 ```
 
