@@ -86,7 +86,7 @@ _Add-on configuration_:
 
 **Note**: _This is just an example, don't copy and past it! Create your own!_
 
-## < name='changelog'>Changelog & Releases
+## <a name='changelog'></a>Changelog & Releases
 
 This repository keeps a [change log](CHANGELOG.md). The format of the log
 is based on [Keep a Changelog][keepchangelog].
