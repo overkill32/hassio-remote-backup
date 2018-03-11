@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 CONFIG_PATH=/data/options.json
 
@@ -9,6 +10,7 @@ SSH_USER=$(jq --raw-output ".ssh_user" $CONFIG_PATH)
 SSH_KEY=$(jq --raw-output ".ssh_key[]" $CONFIG_PATH)
 REMOTE_DIRECTORY=$(jq --raw-output ".remote_directory" $CONFIG_PATH)
 ZIP_PASSWORD=$(jq --raw-output '.zip_password' $CONFIG_PATH)
+KEEP_LOCAL_BACKUP=$(jq --raw-output '.keep_local_backup' $CONFIG_PATH)
 
 # create variables
 SSH_ID="${HOME}/.ssh/id"
@@ -36,7 +38,7 @@ function add-ssh-key {
 function copy-backup-to-remote {
 
     cd /backup/
-    if [[ ! $ZIP_PASSWORD  ]]; then
+    if [[ -z $ZIP_PASSWORD  ]]; then
       echo "Copying ${slug}.tar to ${REMOTE_DIRECTORY} on ${SSH_HOST} using SCP"
       scp -F "${HOME}/.ssh/config" "${slug}.tar" remote:"${REMOTE_DIRECTORY}"
     else
@@ -48,8 +50,27 @@ function copy-backup-to-remote {
 }
 
 function delete-local-backup {
-    hassio snapshots remove -name "${slug}"
-    echo "Deleted local backup: ${slug}"
+
+    hassio snapshots reload
+
+    if [[ ${KEEP_LOCAL_BACKUP} == "all" ]]; then
+        :
+    elif [[ -z ${KEEP_LOCAL_BACKUP} ]]; then
+        echo "Deleting local backup: ${slug}"
+        hassio snapshots remove -name "${slug}"
+    else
+
+        last_date_to_keep=$(hassio snapshots list | jq .data.snapshots[].date | sort -r | \
+            head -n "${KEEP_LOCAL_BACKUP}" | tail -n 1 | xargs date -D "%Y-%m-%dT%T" +%s --date )
+
+        hassio snapshots list | jq -c .data.snapshots[] | while read backup; do
+            if [[ $(echo ${backup} | jq .date | xargs date -D "%Y-%m-%dT%T" +%s --date ) -lt ${last_date_to_keep} ]]; then
+                echo "Deleting local backup: $(echo ${backup} | jq -r .slug)"
+                hassio snapshots remove -name "$(echo ${backup} | jq -r .slug)"
+            fi
+        done
+
+    fi
 }
 
 function create-local-backup {

@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keep-a-changelog] this project adheres to [Semantic Versioning][semantic-versioning].
 
+## [v0.3.0] (2018-03-12)
+
+[Full Changelog](https://github.com/mr-bjerre/hassio-remote-backup/compare/v0.2.1...v0.3.0)
+
+### Added
+
+- New input `keep_local_backup` to control how many local snapshots there should be preserved.
+
 ## [v0.2.1] (2018-03-11)
 
 [Full Changelog](https://github.com/mr-bjerre/hassio-remote-backup/compare/v0.2.0...v0.2.1)
