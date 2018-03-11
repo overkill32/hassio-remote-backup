@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog][keep-a-changelog] this project adheres
 
 ### Fixed
 
-- `config.json` in the [addons repository][addons-repo] was not aligned with the updates from v0.1.0 to v0.2.0.
+- `config.json` in the [addons repository][addons-repo] was not aligned with the updates from v0.1.0 to v0.2.0. All backups created with v0.2.0 is password protected with the password _null_.
 
 
 ## [v0.2.0] (2018-03-07)
