@@ -24,6 +24,6 @@
     "ssh_key": ["str"],
     "remote_directory": "str",
     "zip_password": "str",
-    "keep_local_backup": "match(^(all|[+]?\\d?)$)"
+    "keep_local_backup": "match(^(all|[+]?\\d*)$)"
   }
 }
