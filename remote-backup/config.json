@@ -7,12 +7,15 @@
   "startup": "once",
   "boot": "manual",
   "hassio_api": true,
+  "homeassistant_api": true,
   "map": ["backup:rw"],
   "options": {
     "ssh_host": "",
     "ssh_port": 22,
     "ssh_user": "",
     "ssh_key": [],
+    "ssh_password": "",
+    "addons_to_backup": [],
     "remote_directory": "",
     "zip_password": "",
     "keep_local_backup": ""
@@ -22,6 +25,8 @@
     "ssh_port": "int",
     "ssh_user": "str",
     "ssh_key": ["str"],
+    "ssh_password": "str",
+    "addons_to_backup": ["str"],
     "remote_directory": "str",
     "zip_password": "str",
     "keep_local_backup": "match(^(all|[+]?\\d*)$)"
