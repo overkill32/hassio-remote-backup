@@ -9,6 +9,7 @@
   "hassio_api": true,
   "hassio_role": "backup",
   "map": ["backup:rw"],
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
   "options": {
     "ssh_host": "",
     "ssh_port": 22,
