@@ -3,7 +3,7 @@
   "version": "dev",
   "slug": "remote_backup",
   "description": "Exploit snapshots and SCP to create remote backups to specified server",
-  "url": "https://github.com/mr-bjerre/hassio-remote-backup",
+  "url": "https://github.com/overkill32/hassio-remote-backup",
   "startup": "once",
   "boot": "manual",
   "hassio_api": true,
