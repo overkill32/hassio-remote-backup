@@ -30,7 +30,7 @@ _Note_ the filenames of the backup are given by their assigned slug.
 
 ## <a name='installation'></a>Installation
 
-1. Add the add-ons repository to your Hass.io instance: `https://github.com/mr-bjerre/hassio-addons`.
+1. Add the add-ons repository to your Hass.io instance: `https://github.com/overkill32/hassio-addons`.
 1. Install the Remote Backup add-on.
 1. Configure the add-on with your SSH credentials and desired output directory
 (see configuration below).
@@ -150,13 +150,13 @@ based on the following:
 [i386-pulls-shield]: https://img.shields.io/docker/pulls/fixated/remote-backup-i386.svg
 [i386-version-shield]: https://images.microbadger.com/badges/version/fixated/remote-backup-i386.svg
 
-[license-shield]: https://img.shields.io/github/license/mr-bjerre/hassio-remote-backup.svg
-[releases]: https://github.com/mr-bjerre/hassio-remote-backup/releases
-[releases-shield]: https://img.shields.io/github/release/mr-bjerre/hassio-remote-backup.svg
-[travis-build]: https://travis-ci.org/mr-bjerre/hassio-remote-backup
-[travis-build-shield]: https://travis-ci.org/mr-bjerre/hassio-remote-backup.svg?branch=master
+[license-shield]: https://img.shields.io/github/license/overkill32/hassio-remote-backup.svg
+[releases]: https://github.com/overkill32/hassio-remote-backup/releases
+[releases-shield]: https://img.shields.io/github/release/overkill32/hassio-remote-backup.svg
+[travis-build]: https://travis-ci.org/overkill32/hassio-remote-backup
+[travis-build-shield]: https://travis-ci.org/overkill32/hassio-remote-backup.svg?branch=master
 
 [keepchangelog]: http://keepachangelog.com/en/1.0.0/
 [semver]: http://semver.org/spec/v2.0.0.html
 
-[hassio-addons]: https://github.com/mr-bjerre/hassio-addons
+[hassio-addons]: https://github.com/overkill32/hassio-addons
